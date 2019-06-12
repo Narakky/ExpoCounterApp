@@ -4,15 +4,40 @@ import styled from 'styled-components';
 import colors from '../utils/colors';
 
 class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1,
+    };
+  }
+
+  plus = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+    });
+  }
+
+  minus = () => {
+    this.setState({
+      counter: this.state.counter - 1,
+    });
+  }
+
   render() {
     return (
       <Container>
-        <Count>10</Count>
+        <Count>{this.state.counter}</Count>
         <Buttons>
-          <ButtonBoxPlus underlayColor={colors.plus}>
+          <ButtonBoxPlus
+            underlayColor={colors.plus}
+            onPress={this.plus}
+           >
             <ButtonText>+</ButtonText>
           </ButtonBoxPlus>
-          <ButtonBoxMinus underlayColor={colors.minus}>
+          <ButtonBoxMinus
+            underlayColor={colors.minus}
+            onPress={this.minus}
+           >
             <ButtonText>-</ButtonText>
           </ButtonBoxMinus>
         </Buttons>
